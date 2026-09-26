@@ -8,7 +8,7 @@
   // ⚠️ Change this to wherever your backend is running.
   // Local dev: http://localhost:5000
   // After deploying (Render/Railway/etc): https://your-backend.onrender.com
-  var API_BASE = 'http://localhost:5000';
+ var API_BASE = 'https://studenttoolkit-1.onrender.com';
 
   // ⚠️ Must match the Client ID from Google Cloud Console (see server/README.md)
   var GOOGLE_CLIENT_ID = '764948392324-36kroi583bbchrovp1f2bp13701hip32.apps.googleusercontent.com';
