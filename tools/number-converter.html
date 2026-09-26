@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Base Converter — Student Toolkit</title>
+  <meta name="description" content="Convert between binary, decimal, octal and hexadecimal instantly.">
+  <script>(function(){try{var t=JSON.parse(localStorage.getItem('st-theme'));if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%234f46e5'/%3E%3Cpath d='M19 9.5L12 6 5 9.5l7 3.5 7-3.5z' fill='none' stroke='white' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M8 11.5v3.5c0 1 1.8 2 4 2s4-1 4-2v-3.5' fill='none' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E">
+</head>
+<body data-root="../">
+
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="page-head">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a><span class="sep">/</span>
+        <a href="../pages/engineering.html">Engineering</a><span class="sep">/</span>
+        <span aria-current="page">Number Base Converter</span>
+      </nav>
+      <h1>Number Base Converter</h1>
+      <p class="lead">Enter a value in any base — binary, octal, decimal or hexadecimal — and see all four instantly. Essential for digital electronics and CS courses.</p>
+    </div>
+
+    <div class="tool-layout">
+      <div class="card">
+        <div class="form-row">
+          <div class="field">
+            <label for="numVal">Value</label>
+            <input type="text" id="numVal" placeholder="e.g. 101101 or 255 or FF" autocomplete="off" spellcheck="false" maxlength="32">
+          </div>
+          <div class="field">
+            <label for="base">Base of input</label>
+            <select id="base">
+              <option value="10">Decimal (base 10)</option>
+              <option value="2">Binary (base 2)</option>
+              <option value="8">Octal (base 8)</option>
+              <option value="16">Hexadecimal (base 16)</option>
+            </select>
+          </div>
+        </div>
+        <div class="error-text" id="err"></div>
+
+        <div class="num-base-grid" id="out" aria-live="polite">
+          <div class="nb"><span>Binary</span><b id="oBin">—</b></div>
+          <div class="nb"><span>Octal</span><b id="oOct">—</b></div>
+          <div class="nb"><span>Decimal</span><b id="oDec">—</b></div>
+          <div class="nb"><span>Hexadecimal</span><b id="oHex">—</b></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:10px">Quick reference</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Decimal</th><th>Binary</th><th>Hex</th></tr></thead>
+            <tbody>
+              <tr><td>8</td><td>1000</td><td>8</td></tr>
+              <tr><td>10</td><td>1010</td><td>A</td></tr>
+              <tr><td>15</td><td>1111</td><td>F</td></tr>
+              <tr><td>16</td><td>10000</td><td>10</td></tr>
+              <tr><td>255</td><td>11111111</td><td>FF</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/number.js"></script>
+</body>
+</html>

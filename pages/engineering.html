@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Tools — Student Toolkit</title>
+  <meta name="description" content="Ohm's law calculator, unit converter and number base converter for engineering students.">
+  <script>(function(){try{var t=JSON.parse(localStorage.getItem('st-theme'));if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%234f46e5'/%3E%3Cpath d='M19 9.5L12 6 5 9.5l7 3.5 7-3.5z' fill='none' stroke='white' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M8 11.5v3.5c0 1 1.8 2 4 2s4-1 4-2v-3.5' fill='none' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E">
+</head>
+<body data-root="../">
+
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="page-head">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a><span class="sep">/</span><span aria-current="page">Engineering</span>
+      </nav>
+      <h1>Engineering Tools</h1>
+      <p class="lead">Technical calculators and converters for labs, assignments and quick checks.</p>
+    </div>
+    <div class="grid grid-3 section" id="catGrid" style="padding-top:24px"></div>
+    <div class="alert alert-info no-print">More engineering tools (resistor colour codes, frequency/wavelength) are planned for V2 based on student feedback.</div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    (function(){
+      var grid = document.getElementById('catGrid');
+      grid.innerHTML = ST_TOOLS.filter(function(t){return t.cat==='Engineering';}).map(function(t){
+        return '<a class="tool-card" href="../'+t.url+'">'+
+          '<span class="tc-arrow">'+ST_ICONS.arrow+'</span>'+
+          '<span class="tc-icon">'+ST_ICONS.tool+'</span>'+
+          '<span class="tc-cat">'+t.cat+'</span>'+
+          '<h3>'+t.name+'</h3><p>'+t.desc+'</p></a>';
+      }).join('');
+    })();
+  </script>
+</body>
+</html>

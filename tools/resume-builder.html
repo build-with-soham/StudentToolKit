@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder — Student Toolkit</title>
+  <meta name="description" content="Build a clean, structured student resume with live preview and print support.">
+  <script>(function(){try{var t=JSON.parse(localStorage.getItem('st-theme'));if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%234f46e5'/%3E%3Cpath d='M19 9.5L12 6 5 9.5l7 3.5 7-3.5z' fill='none' stroke='white' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M8 11.5v3.5c0 1 1.8 2 4 2s4-1 4-2v-3.5' fill='none' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E">
+</head>
+<body data-root="../">
+
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="page-head">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a><span class="sep">/</span>
+        <a href="../pages/career.html">Career</a><span class="sep">/</span>
+        <span aria-current="page">Resume Builder</span>
+      </nav>
+      <h1>Resume Builder</h1>
+      <p class="lead">Fill in your details and watch the preview update live. Use “Print / Save as PDF” to export. Your data is saved locally so you can come back anytime.</p>
+    </div>
+
+    <div class="tool-layout two-col">
+      <!-- FORM -->
+      <div class="resume-form-col">
+        <div class="card" style="margin-bottom:18px">
+          <h3 style="margin-bottom:16px">Personal information</h3>
+          <div class="field"><label for="r-name">Full name</label><input type="text" id="r-name" placeholder="Priya Sharma" maxlength="60"></div>
+          <div class="form-row">
+            <div class="field"><label for="r-email">Email</label><input type="email" id="r-email" placeholder="priya@example.com" maxlength="80"></div>
+            <div class="field"><label for="r-phone">Phone</label><input type="tel" id="r-phone" placeholder="+91 98765 43210" maxlength="20"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="r-location">Location</label><input type="text" id="r-location" placeholder="Pune, India" maxlength="60"></div>
+            <div class="field"><label for="r-link">Link <span class="hint">LinkedIn / GitHub</span></label><input type="text" id="r-link" placeholder="linkedin.com/in/priya" maxlength="100"></div>
+          </div>
+          <div class="field" style="margin-bottom:0"><label for="r-summary">Summary <span class="hint">1–2 lines</span></label><textarea id="r-summary" placeholder="Third-year ENTC student passionate about software development..." maxlength="300"></textarea></div>
+        </div>
+
+        <div class="card" style="margin-bottom:18px">
+          <h3 style="margin-bottom:16px">Education</h3>
+          <div id="eduRows"></div>
+          <button class="btn add-row-btn" data-add="edu">+ Add education</button>
+        </div>
+
+        <div class="card" style="margin-bottom:18px">
+          <h3 style="margin-bottom:16px">Skills</h3>
+          <div class="field" style="margin-bottom:0"><label for="r-skills">Skills <span class="hint">comma separated</span></label><input type="text" id="r-skills" placeholder="JavaScript, React, SQL, Git" maxlength="200"></div>
+        </div>
+
+        <div class="card" style="margin-bottom:18px">
+          <h3 style="margin-bottom:16px">Projects</h3>
+          <div id="projRows"></div>
+          <button class="btn add-row-btn" data-add="proj">+ Add project</button>
+        </div>
+
+        <div class="card" style="margin-bottom:18px">
+          <h3 style="margin-bottom:16px">Experience <span class="hint" style="font-weight:400;color:var(--text-3)">optional</span></h3>
+          <div id="expRows"></div>
+          <button class="btn add-row-btn" data-add="exp">+ Add experience</button>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:16px">Certifications & achievements <span class="hint" style="font-weight:400;color:var(--text-3)">optional</span></h3>
+          <div class="field" style="margin-bottom:0"><label for="r-certs">One per line</label><textarea id="r-certs" placeholder="AWS Cloud Practitioner (2026)&#10;Winner — College Hackathon 2025" maxlength="500"></textarea></div>
+        </div>
+
+        <div class="tool-actions" style="margin:18px 0 30px">
+          <button class="btn btn-primary" id="printBtn">Print / Save as PDF</button>
+          <button class="btn btn-ghost" id="clearBtn">Clear all</button>
+        </div>
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="resume-preview-wrap">
+        <div class="tpl-switcher no-print" role="group" aria-label="Resume template">
+          <button type="button" class="tpl-swatch tpl-swatch-classic active" data-tpl="classic" title="Classic">
+            <span></span>Classic
+          </button>
+          <button type="button" class="tpl-swatch tpl-swatch-modern" data-tpl="modern" title="Modern">
+            <span></span>Modern
+          </button>
+          <button type="button" class="tpl-swatch tpl-swatch-minimal" data-tpl="minimal" title="Minimal">
+            <span></span>Minimal
+          </button>
+        </div>
+        <p class="small muted no-print" style="margin-bottom:10px">Live preview</p>
+        <div class="resume-paper tpl-classic" id="resumePaper" aria-live="polite"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/resume.js"></script>
+</body>
+</html>

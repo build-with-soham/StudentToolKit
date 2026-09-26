@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer — Student Toolkit</title>
+  <meta name="description" content="Configurable Pomodoro focus timer with short and long breaks for study sessions.">
+  <script>(function(){try{var t=JSON.parse(localStorage.getItem('st-theme'));if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%234f46e5'/%3E%3Cpath d='M19 9.5L12 6 5 9.5l7 3.5 7-3.5z' fill='none' stroke='white' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M8 11.5v3.5c0 1 1.8 2 4 2s4-1 4-2v-3.5' fill='none' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E">
+</head>
+<body data-root="../">
+
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="page-head">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a><span class="sep">/</span>
+        <a href="../pages/productivity.html">Productivity</a><span class="sep">/</span>
+        <span aria-current="page">Pomodoro Timer</span>
+      </nav>
+      <h1>Pomodoro Timer</h1>
+      <p class="lead">Study in focused sprints: work for a set time, take a short break, and a longer break after four sessions. Timings are configurable.</p>
+    </div>
+
+    <div class="tool-layout two-col">
+      <div class="card" style="text-align:center">
+        <div class="timer-modes">
+          <button class="chip active" data-mode="focus">Focus</button>
+          <button class="chip" data-mode="short">Short break</button>
+          <button class="chip" data-mode="long">Long break</button>
+        </div>
+
+        <div class="timer-ring-wrap">
+          <div style="position:relative;display:inline-block">
+            <svg class="timer-ring" width="240" height="240" viewBox="0 0 240 240">
+              <defs>
+                <linearGradient id="timerGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#4f46e5"/><stop offset="100%" stop-color="#7c3aed"/>
+                </linearGradient>
+              </defs>
+              <circle class="ring-bg" cx="120" cy="120" r="104" fill="none" stroke-width="12"/>
+              <circle class="ring-fg" id="ringFg" cx="120" cy="120" r="104" fill="none" stroke-width="12"/>
+            </svg>
+            <div class="timer-center-label" style="top:50%;left:50%;transform:translate(-50%,-50%)">
+              <div class="timer-face" id="timeFace">25:00</div>
+              <div class="small muted" id="modeLabel">Focus session</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center">
+          <button class="btn btn-primary" id="startBtn" style="min-width:130px">Start</button>
+          <button class="btn btn-secondary" id="resetBtn">Reset</button>
+        </div>
+        <p class="small muted" style="margin-top:16px">Focus sessions completed today: <b id="doneToday">0</b></p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:14px">Timer settings</h3>
+        <div class="form-row-3">
+          <div class="field"><label for="cfgFocus">Focus <span class="hint">min</span></label><input type="number" id="cfgFocus" min="1" max="120" step="1"></div>
+          <div class="field"><label for="cfgShort">Short break <span class="hint">min</span></label><input type="number" id="cfgShort" min="1" max="60" step="1"></div>
+          <div class="field"><label for="cfgLong">Long break <span class="hint">min</span></label><input type="number" id="cfgLong" min="1" max="90" step="1"></div>
+        </div>
+        <div class="error-text" id="cfgErr"></div>
+        <p class="small muted">Changes apply to the next session. Defaults: 25 / 5 / 15 minutes.</p>
+        <div class="alert alert-info" style="margin-top:16px">Tip: keep this tab open — the timer keeps running while you review notes in another window.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/pomodoro.js"></script>
+</body>
+</html>
