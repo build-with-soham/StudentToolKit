@@ -28,7 +28,12 @@ router.post('/google', async (req, res) => {
     const { sub: googleId, email, name, picture } = payload;
 
     // 2. Find or create the matching user in MongoDB.
-    let user = await User.findOne({ googleId });
+   let user = await User.findOne({
+  $or: [
+    { googleId: googleId },
+    { email: email.toLowerCase() }
+  ]
+    });
     if (!user) {
       user = await User.create({ googleId, email, name, avatar: picture || '' });
     } else {
