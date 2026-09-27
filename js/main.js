@@ -73,7 +73,10 @@
           '<button class="icon-btn nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">' + I.menu + '</button>' +
         '</div>' +
       '</nav>' +
-      '<div class="mobile-panel" id="mobilePanel">' + linksHtml + '</div>';
+            '</nav>' +
+      '<div class="mobile-panel" id="mobilePanel">' + linksHtml +
+        '<div id="authSlotMobile" class="auth-slot auth-slot-mobile"></div>' +
+      '</div>';
   }
 
   /* ---------- Footer ---------- */
