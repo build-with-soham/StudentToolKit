@@ -75,9 +75,8 @@
         } else {
       slot.innerHTML =
         '<div class="auth-buttons">' +
-          '<div id="gLoginBtn" class="g-btn-slot"></div>' +
-          '<div id="gSignupBtn" class="g-btn-slot"></div>' +
-        '</div>';
+  '<div id="gLoginBtn" class="g-btn-slot"></div>' +
+'</div>';
       renderGoogleButtons();
     }
   }
@@ -85,15 +84,13 @@
   function renderGoogleButtons() {
     if (!window.google || !google.accounts) return;
     var loginEl = document.getElementById('gLoginBtn');
-    var signupEl = document.getElementById('gSignupBtn');
+    var signupEl = null;
     if (!loginEl || !signupEl) return;
 
         google.accounts.id.renderButton(loginEl, {
       theme: 'outline', size: 'medium', shape: 'pill', text: 'signin', width: 110
     });
-    google.accounts.id.renderButton(signupEl, {
-      theme: 'filled_black', size: 'medium', shape: 'pill', text: 'signup_with', width: 200
-    });
+    
   }
 
   function handleCredentialResponse(response) {
