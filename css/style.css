@@ -660,3 +660,176 @@ tr:last-child td{border-bottom:none}
   .card{border:none;box-shadow:none;padding:0}
   main{padding:0!important}
 }
+/* =========================================
+   FINAL MOBILE OVERFLOW FIX
+   ========================================= */
+
+@media (max-width: 760px) {
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    position: relative;
+  }
+
+  #site-header {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  #site-header .container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+    overflow: hidden;
+  }
+
+  #site-header .nav {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 5px;
+    overflow: hidden;
+  }
+
+  /* LOGO */
+  #site-header .brand {
+    min-width: 0;
+    max-width: 150px;
+    flex: 1 1 auto;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  #site-header .brand-mark {
+    flex: 0 0 34px;
+  }
+
+  /* Hide desktop links */
+  #site-header .nav-links {
+    display: none !important;
+  }
+
+  /* RIGHT SIDE */
+  #site-header .nav-actions {
+    min-width: 0;
+    flex: 0 1 auto;
+    margin-left: auto;
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  /* SEARCH + THEME + MENU */
+  #site-header .nav-actions > .icon-btn {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+  }
+
+  /* AUTH CONTAINER */
+  #site-header .auth-slot {
+    min-width: 0;
+    max-width: 115px;
+    flex: 0 1 auto;
+    overflow: hidden;
+  }
+
+  /* LOGGED-IN USER */
+  #site-header .auth-user {
+    min-width: 0;
+    max-width: 115px;
+    padding: 3px 5px 3px 3px;
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  #site-header .auth-user img {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+  }
+
+  #site-header .auth-name {
+    min-width: 0;
+    max-width: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #site-header .auth-user .icon-btn {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+  }
+
+  /* GOOGLE BUTTONS */
+  #site-header .auth-buttons {
+    min-width: 0;
+    max-width: 110px;
+    overflow: hidden;
+  }
+
+  #site-header .g-btn-slot {
+    max-width: 110px;
+    overflow: hidden;
+  }
+
+  /* MOBILE MENU */
+  #site-header .nav-menu-btn {
+    display: grid !important;
+    flex: 0 0 38px;
+  }
+
+  /* Prevent common page elements from creating horizontal scroll */
+  main,
+  section,
+  footer,
+  .container {
+    max-width: 100%;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+  }
+}
+@media (max-width: 760px) {
+
+  /* Hide the Google buttons from the mobile header */
+  
+
+  /* Keep logged-in user compact */
+  .auth-user {
+    max-width: 40px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .auth-user .auth-name,
+  .auth-user .icon-btn {
+    display: none !important;
+  }
+
+  .auth-user img {
+    width: 34px !important;
+    height: 34px !important;
+    display: block;
+  }
+
+  .auth-slot {
+    width: 40px;
+    max-width: 40px;
+    flex: 0 0 40px;
+  }
+}
