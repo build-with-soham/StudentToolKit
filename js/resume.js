@@ -208,8 +208,43 @@
   fields.forEach(function (f) {
     document.getElementById('r-' + f).addEventListener('input', collect);
   });
+document.getElementById('printBtn').addEventListener('click', function () {
+  var element = document.getElementById('resumePaper');
 
-  document.getElementById('printBtn').addEventListener('click', function () { window.print(); });
+  if (!element) {
+    alert('Resume preview not found.');
+    return;
+  }
+
+  if (typeof html2pdf === 'undefined') {
+    alert('PDF generator is not loaded. Please refresh the page and try again.');
+    return;
+  }
+
+  var options = {
+    margin: 0,
+    filename: 'StudentToolkit-Resume.pdf',
+    image: {
+      type: 'jpeg',
+      quality: 0.98
+    },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff'
+    },
+    jsPDF: {
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'portrait'
+    }
+  };
+
+  html2pdf()
+    .set(options)
+    .from(element)
+    .save();
+});
   document.getElementById('clearBtn').addEventListener('click', function () {
     if (!confirm('Clear all resume data? This cannot be undone.')) return;
     ST.remove(KEY);

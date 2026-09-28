@@ -56,30 +56,38 @@
   window.ST_AUTH = { getUser: getUser, getToken: getToken, apiFetch: apiFetch, logout: logout };
 
   /* ---------- Header UI: login button vs. avatar menu ---------- */
-  function renderAuthSlot() {
-    var slot = document.getElementById('authSlot');
-    if (!slot) return;
-    var user = getUser();
+ function renderAuthSlot() {
+  var slot = document.getElementById('authSlot');
+  if (!slot) return;
 
-    if (user) {
-      slot.innerHTML =
-        '<div class="auth-user">' +
-          '<img src="' + (user.avatar || '') + '" alt="" referrerpolicy="no-referrer">' +
-          '<span class="auth-name">' + user.name.split(' ')[0] + '</span>' +
-          '<button class="icon-btn" id="logoutBtn" title="Log out">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>' +
-          '</button>' +
-        '</div>';
-      var logoutBtn = document.getElementById('logoutBtn');
-      if (logoutBtn) logoutBtn.addEventListener('click', logout);
-        } else {
-      slot.innerHTML =
-        '<div class="auth-buttons">' +
-  '<div id="gLoginBtn" class="g-btn-slot"></div>' +
-'</div>';
-      renderGoogleButtons();
-    }
+  var user = getUser();
+
+  if (user) {
+    slot.innerHTML =
+      '<div class="auth-user">' +
+        '<img src="' + (user.avatar || '') + '" alt="" referrerpolicy="no-referrer">' +
+        '<span class="auth-name">' + user.name.split(' ')[0] + '</span>' +
+        '<button class="icon-btn" id="logoutBtn" title="Log out">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+          '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>' +
+          '<path d="M16 17l5-5-5-5"/>' +
+          '<path d="M21 12H9"/>' +
+          '</svg>' +
+        '</button>' +
+      '</div>';
+
+    var logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+
+  } else {
+    slot.innerHTML =
+      '<div class="auth-buttons">' +
+        '<div id="gLoginBtn" class="g-btn-slot"></div>' +
+      '</div>';
+
+    renderGoogleButtons();
   }
+}
 
   function renderGoogleButtons() {
     if (!window.google || !google.accounts) return;
@@ -93,17 +101,28 @@
     
   }
 
-  function handleCredentialResponse(response) {
-    apiFetch('/api/auth/google', { method: 'POST', body: { credential: response.credential } })
-      .then(function (data) {
-        saveSession(data.token, data.user);
-        renderAuthSlot();
-      })
-      .catch(function (err) {
-        console.error('Login failed:', err.message);
-        alert('Sign-in failed. Please try again.');
-      });
-  }
+  function renderGoogleButtons() {
+  if (!window.google || !google.accounts) return;
+
+  var loginEl = document.getElementById('gLoginBtn');
+  if (!loginEl) return;
+
+  google.accounts.id.renderButton(loginEl, {
+    theme: 'outline',
+    size: 'medium',
+    shape: 'pill',
+    text: 'signin',
+    width: 110
+  });
+
+  google.accounts.id.renderButton(signupEl, { 
+  theme: 'filled_black',
+  size: 'medium',
+  shape: 'pill',
+  text: 'signup_with',
+  width: 200
+});
+}
 
   function logout() {
     clearSession();

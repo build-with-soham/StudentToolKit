@@ -661,7 +661,7 @@ tr:last-child td{border-bottom:none}
   main{padding:0!important}
 }
 /* =========================================
-   FINAL MOBILE OVERFLOW FIX
+   STUDENT TOOLKIT — MOBILE HEADER FINAL
    ========================================= */
 
 @media (max-width: 760px) {
@@ -671,10 +671,6 @@ tr:last-child td{border-bottom:none}
     width: 100%;
     max-width: 100%;
     overflow-x: hidden !important;
-  }
-
-  body {
-    position: relative;
   }
 
   #site-header {
@@ -689,147 +685,121 @@ tr:last-child td{border-bottom:none}
     min-width: 0;
     padding-left: 12px;
     padding-right: 12px;
-    overflow: hidden;
   }
 
   #site-header .nav {
     width: 100%;
-    max-width: 100%;
     min-width: 0;
     gap: 5px;
-    overflow: hidden;
   }
 
-  /* LOGO */
+  /* Logo */
   #site-header .brand {
     min-width: 0;
-    max-width: 150px;
     flex: 1 1 auto;
     overflow: hidden;
     white-space: nowrap;
   }
 
-  #site-header .brand-mark {
-    flex: 0 0 34px;
-  }
-
-  /* Hide desktop links */
   #site-header .nav-links {
     display: none !important;
   }
 
-  /* RIGHT SIDE */
+  /* Right side */
   #site-header .nav-actions {
-    min-width: 0;
-    flex: 0 1 auto;
-    margin-left: auto;
+    display: flex;
+    align-items: center;
     gap: 4px;
-    overflow: hidden;
+    min-width: 0;
+    margin-left: auto;
+    flex: 0 0 auto;
   }
 
-  /* SEARCH + THEME + MENU */
+  /* Search + theme */
   #site-header .nav-actions > .icon-btn {
-    flex: 0 0 38px;
     width: 38px;
     height: 38px;
+    flex: 0 0 38px;
   }
 
-  /* AUTH CONTAINER */
-  #site-header .auth-slot {
-    min-width: 0;
-    max-width: 115px;
-    flex: 0 1 auto;
-    overflow: hidden;
+  /* =====================================
+     LOGIN — IMPORTANT: authSlot IS AN ID
+     ===================================== */
+
+  #authSlot {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 105px !important;
+    max-width: 105px !important;
+    min-width: 0 !important;
+
+    flex: 0 0 105px !important;
+
+    overflow: hidden !important;
   }
 
-  /* LOGGED-IN USER */
-  #site-header .auth-user {
-    min-width: 0;
-    max-width: 115px;
-    padding: 3px 5px 3px 3px;
+  #authSlot .auth-buttons {
+    display: flex !important;
+    align-items: center;
+
+    width: 105px !important;
+    max-width: 105px !important;
+    min-width: 0 !important;
+
+    overflow: hidden !important;
+  }
+
+  #authSlot .g-btn-slot {
+    display: block !important;
+
+    width: 105px !important;
+    max-width: 105px !important;
+    min-width: 0 !important;
+
+    overflow: hidden !important;
+  }
+
+  /* Google generated button */
+  #authSlot iframe {
+    max-width: 105px !important;
+  }
+
+  /* Logged-in user */
+  #authSlot .auth-user {
+    display: flex !important;
+    align-items: center;
     gap: 4px;
-    overflow: hidden;
-  }
 
-  #site-header .auth-user img {
-    width: 28px;
-    height: 28px;
-    flex: 0 0 28px;
-  }
-
-  #site-header .auth-name {
+    max-width: 105px;
     min-width: 0;
-    max-width: 48px;
+  }
+
+  #authSlot .auth-user img {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+  #authSlot .auth-name {
+    max-width: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  #site-header .auth-user .icon-btn {
+  #authSlot .auth-user .icon-btn {
     width: 28px;
     height: 28px;
     flex: 0 0 28px;
   }
 
-  /* GOOGLE BUTTONS */
-  #site-header .auth-buttons {
-    min-width: 0;
-    max-width: 110px;
-    overflow: hidden;
-  }
-
-  #site-header .g-btn-slot {
-    max-width: 110px;
-    overflow: hidden;
-  }
-
-  /* MOBILE MENU */
+  /* Mobile menu */
   #site-header .nav-menu-btn {
     display: grid !important;
+    width: 38px;
+    height: 38px;
     flex: 0 0 38px;
-  }
-
-  /* Prevent common page elements from creating horizontal scroll */
-  main,
-  section,
-  footer,
-  .container {
-    max-width: 100%;
-  }
-
-  img,
-  video,
-  iframe {
-    max-width: 100%;
-  }
-}
-@media (max-width: 760px) {
-
-  /* Hide the Google buttons from the mobile header */
-  
-
-  /* Keep logged-in user compact */
-  .auth-user {
-    max-width: 40px !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-  }
-
-  .auth-user .auth-name,
-  .auth-user .icon-btn {
-    display: none !important;
-  }
-
-  .auth-user img {
-    width: 34px !important;
-    height: 34px !important;
-    display: block;
-  }
-
-  .auth-slot {
-    width: 40px;
-    max-width: 40px;
-    flex: 0 0 40px;
   }
 }
